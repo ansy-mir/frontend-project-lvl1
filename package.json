@@ -21,6 +21,7 @@
     "brain-games": "bin/brain-games.js"
   },
   "dependencies": {
-    "jshint": "^2.12.0"
+    "jshint": "^2.12.0",
+    "readline-sync": "^1.4.10"
   }
 }
