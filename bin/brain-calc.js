@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-
-import isEven from '../src/index.js';
+import calculate from '../games/calc.js';
 
 console.log('Welcome to the Brain Games!');
 
-isEven();
+calculate();
