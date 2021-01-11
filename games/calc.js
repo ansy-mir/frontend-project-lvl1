@@ -1,47 +1,33 @@
-import readlineSync from 'readline-sync';
-import getUserName from '../src/cli.js';
+import { cons } from '@hexlet/pairs';
+import getRandomNumber from '../src/getRandom.js';
 
-const userName = getUserName();
+export const taskDescription = 'What is the result of the expression?';
 
 const calculate = () => {
-  console.log('What is the result of the expression?');
+  const a = getRandomNumber(1, 100);
+  const b = getRandomNumber(1, 100);
 
-  for (let count = 0; count < 3; count += 1) {
-    const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
+  const randomNumberForSign = getRandomNumber(1, 3);
+  let randomSign;
 
-    const a = getRandomNumber(1, 100);
-    const b = getRandomNumber(1, 100);
-    let result;
-    const randomNumberForSign = getRandomNumber(1, 3);
-    let randomSign;
-    switch (randomNumberForSign) {
-      case 1:
-        randomSign = '+';
-        result = a + b;
-        break;
-      case 2:
-        randomSign = '-';
-        result = a - b;
-        break;
-      default:
-        randomSign = '*';
-        result = a * b;
-        break;
-    }
-    console.log(`Question: ${a} ${randomSign} ${b}`);
+  let correctAnswer;
 
-    const answer = +readlineSync.question('Your answer: ');
-
-    if (result === answer) {
-      console.log('Correct!');
-      if (count === 2) {
-        console.log(`Congratulations, ${userName}!`);
-      }
-    } else if (result !== answer) {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}`);
-      console.log(`Let's try again, ${userName}!`);
+  switch (randomNumberForSign) {
+    case 1:
+      randomSign = '+';
+      correctAnswer = String(a + b);
       break;
-    }
+    case 2:
+      randomSign = '-';
+      correctAnswer = String(a - b);
+      break;
+    default:
+      randomSign = '*';
+      correctAnswer = String(a * b);
+      break;
   }
+  const question = `Question: ${a} ${randomSign} ${b}`;
+
+  return cons(question, correctAnswer);
 };
 export default calculate;

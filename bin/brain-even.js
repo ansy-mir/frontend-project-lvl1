@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import isEven from '../src/index.js';
+import isEven, { taskDescription } from '../games/even.js';
+import playGame from '../src/index.js';
 
-console.log('Welcome to the Brain Games!');
-
-isEven();
+playGame(isEven, taskDescription);
